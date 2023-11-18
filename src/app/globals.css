@@ -40,9 +40,8 @@ img {
 
 /* Utility */
 .container {
-  margin: 0 auto;
+  margin: 40px auto;
   max-width: 1180px;
-  padding: 30px 20px;
 }
 
 .title {
