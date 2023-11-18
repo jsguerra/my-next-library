@@ -1,0 +1,13 @@
+.form-container {
+  display: flex;
+  gap: 60px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 49%;
+}
