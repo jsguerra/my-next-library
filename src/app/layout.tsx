@@ -24,7 +24,7 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <footer style={{ padding: "1rem", textAlign: "center" }}>
-          &copy; {currentYear} My Library
+          &copy; {currentYear} My Next Library
         </footer>
       </body>
     </html>
