@@ -21,7 +21,7 @@ export default async function Home() {
               <span className="badge-success">+ add tag</span>
             </Link>
             {tags.map((tag) => (
-              <Link key={tag.id} href={`/tags/${tag.slug}`}>
+              <Link key={tag.id} href={`/tag/${tag.slug}`}>
                 <span className="badge">{tag.name}</span>
               </Link>
             ))}
