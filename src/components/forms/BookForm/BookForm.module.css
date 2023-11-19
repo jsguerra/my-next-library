@@ -1,0 +1,13 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.check-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
