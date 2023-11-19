@@ -11,3 +11,11 @@
   align-items: center;
   gap: 10px;
 }
+
+.selection {
+  columns: 4;
+}
+
+.selection label {
+  margin-bottom: 20px;
+}

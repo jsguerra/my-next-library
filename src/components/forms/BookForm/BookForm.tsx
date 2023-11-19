@@ -50,7 +50,7 @@ export function BookForm({ authors, tags }: BookFormProps) {
         type="text"
       />
       <input
-        accept="image/png, image, jpeg"
+        accept="image/png, image/jpeg"
         name="images"
         multiple
         type="file"
@@ -71,7 +71,7 @@ export function BookForm({ authors, tags }: BookFormProps) {
       {tags.length > 0 && (
         <div className={Styles.selection}>
           {tags.map((tag) => (
-            <label key={tag.id}>
+            <label className={Styles["check-box"]} key={tag.id}>
               <input name="tag" type="checkbox" value={tag.id} />{" "}
               <span>{tag.name}</span>
             </label>
