@@ -1,5 +1,20 @@
 A custom Next.js 14 Library App using server actions.
 
+## To do
+- [ ] Author edit page
+- [ ] Book edit page
+- [ ] Tag edit page
+- [ ] Add actions for edit/delete
+- [ ] Update form components for edit/delete
+- [ ] Update author thumbnails preview
+- [ ] Update tag page
+- [x] Favorites page
+- [ ] Search page
+- [ ] Search component
+- [ ] Pagination component
+- [ ] Add Grid column toggle
+- [ ] Filter component
+
 ## Getting Started
 
 First, run the development server:

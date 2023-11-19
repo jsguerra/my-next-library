@@ -13,6 +13,8 @@ export default async function Author({ params }: { params: { slug: string } }) {
   });
 
   const author = authors[0];
+  const authorDirectory = author.slug;
+  const firstLetter = authorDirectory.slice(0, 1);
 
   return (
     <>
@@ -34,7 +36,23 @@ export default async function Author({ params }: { params: { slug: string } }) {
       <Grid numOfCol={author.books.length > 0 ? "5" : "1"}>
         {author.books.length > 0 ? "" : <p>No books by author yet</p>}
         {author.books &&
-          author.books.map((book) => <p key={book.id}>{book.title}</p>)}
+          author.books.map((book, i) => {
+            const pages = book.pages?.split(", ");
+
+            return (
+              <div key={book.id}>
+                {pages && (
+                  <Link href={`/book/${book.slug}`}>
+                    <img
+                      src={`/library/${firstLetter}/${authorDirectory}/${book.title}/${pages[i]}`}
+                    />
+                  </Link>
+                )}
+
+                <p>{book.title}</p>
+              </div>
+            );
+          })}
       </Grid>
     </>
   );
