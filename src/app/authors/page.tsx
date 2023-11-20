@@ -29,13 +29,15 @@ export default async function AuthorsDirecotry() {
             const directory = author.slug.slice(0, 1);
 
             return (
-              <Link key={author.id} href={`/authors/${author.slug}`}>
-                <img
-                  src={`/library/${directory}/${author.slug}/${author.thumbnail}`}
-                  alt={author.name}
-                />
-                {author.name}
-              </Link>
+              <div style={{ textAlign: "center" }} key={author.id}>
+                <Link href={`/authors/${author.slug}`}>
+                  <img
+                    src={`/library/${directory}/${author.slug}/${author.thumbnail}`}
+                    alt={author.name}
+                  />
+                </Link>
+                <p>{author.name}</p>
+              </div>
             );
           })}
       </Grid>
