@@ -6,7 +6,7 @@ A custom Next.js 14 Library App using server actions.
 - [ ] Tag edit page
 - [ ] Add actions for edit/delete
 - [ ] Update form components for edit/delete
-- [ ] Update author thumbnails preview
+- [x] Update author thumbnails preview
 - [x] Update tag page
 - [x] Favorites page
 - [ ] Favorite needs check for empty array
