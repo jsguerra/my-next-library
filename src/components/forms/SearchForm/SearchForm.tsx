@@ -1,18 +1,17 @@
 "use client";
 
-import { useRef } from "react";
+import { useState } from "react";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import Styles from "./SearchForm.module.css";
 
 export default function SearchForm() {
-  const ref = useRef<HTMLFormElement>(null);
+  const [inputValue, setInputValue] = useState("");
+  const [url, setUrl] = useState("");
   const searchParams = useSearchParams();
-  const pathname = usePathname();
   const router = useRouter();
 
-  let query = "";
-
   function handleSearch(term: string) {
+    setInputValue(term);
     const params = new URLSearchParams(searchParams);
 
     if (term) {
@@ -21,32 +20,30 @@ export default function SearchForm() {
       params.delete("q");
     }
 
-    query = `${pathname}?${params.toString()}`;
+    setUrl(`/search?${params.toString()}`);
   }
 
   return (
-    <search>
-      <form
-        ref={ref}
-        onSubmit={(e) => {
-          e.preventDefault();
-          router.push(`/search/${query}`);
-          ref.current?.reset();
+    <div className={Styles.form}>
+      <input
+        autoComplete="off"
+        name="search"
+        type="text"
+        onChange={(e) => {
+          handleSearch(e.target.value);
         }}
-        className={Styles.form}
+        value={inputValue}
+      />
+      <button
+        type="button"
+        onClick={() => {
+          setInputValue("");
+          router.push(url);
+        }}
+        className="btn"
       >
-        <input
-          autoComplete="off"
-          name="search"
-          type="text"
-          onChange={(e) => {
-            handleSearch(e.target.value);
-          }}
-        />
-        <button type="submit" className="btn">
-          Search
-        </button>
-      </form>
-    </search>
+        Search
+      </button>
+    </div>
   );
 }
