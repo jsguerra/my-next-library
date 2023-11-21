@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SearchForm from "@/components/forms/SearchForm/SearchForm";
 import Styles from "./Navbar.module.css";
 
 const navItems = [
@@ -18,6 +19,7 @@ export default function Navbar() {
       <Link className={Styles.logo} href="/">
         My Next Library
       </Link>
+      <SearchForm />
       <ul>
         {navItems.map((item) => (
           <li key={item.title}>
