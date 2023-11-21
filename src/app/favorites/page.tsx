@@ -23,6 +23,7 @@ export default async function Favorites() {
         </div>
       </div>
       <Grid numOfCol={favorites.length > 0 ? "5" : "1"}>
+        {favorites.length > 0 ? "" : <p>No books in my favorites yet</p>}
         {favorites &&
           favorites.map((favorite) => {
             const authorDirectory = favorite.author.slug;
