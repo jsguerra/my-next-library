@@ -1,7 +1,11 @@
-export default function Search() {
+export default function Search({
+  searchParams,
+}: {
+  searchParams?: { q?: string };
+}) {
   return (
     <div className="container">
-      <h1>Search Results</h1>
+      <h1>Search Results for: {searchParams?.q}</h1>
     </div>
   );
 }
