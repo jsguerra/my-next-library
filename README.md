@@ -9,9 +9,10 @@ A custom Next.js 14 Library App using server actions.
 - [x] Update author thumbnails preview
 - [x] Update tag page
 - [x] Favorites page
-- [ ] Favorite needs check for empty array
+- [x] Favorite needs check for empty array
 - [ ] Search page
-- [ ] Search component
+- [x] Search component
+- [ ] Search componnt bug on results page
 - [ ] Pagination component
 - [ ] Add pagination to pages (home, tags, favorites, search)
 - [ ] Add Grid column toggle
