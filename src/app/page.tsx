@@ -41,7 +41,7 @@ export default async function Home() {
             const pages = book.pages?.split(", ");
 
             return (
-              <div key={book.id}>
+              <div style={{ textAlign: "center" }} key={book.id}>
                 {pages && (
                   <Link href={`/book/${book.slug}`}>
                     <img
