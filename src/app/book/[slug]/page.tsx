@@ -24,18 +24,15 @@ export default async function Book({ params }: { params: { slug: string } }) {
   return (
     <>
       <div className="container">
-        <h1>
-          Book: {book.title}{" "}
-          {book.favorite === true ? <span>- favorite</span> : ""}
+        <h1 className={Styles.title}>
+          {book.title}{" "}
+          {book.favorite === true ? (
+            <span className={Styles.favorite}>(favorite)</span>
+          ) : (
+            ""
+          )}
         </h1>
-        <p>By {book.author.name}</p>
-        <div className={Styles.meta}>
-          <p>Total pages: {pages?.length}</p>
-          <Link className="btn" href="/book/edit/i-robot">
-            Edit Book
-          </Link>
-        </div>
-
+        <p className={Styles.author}>By {book.author.name}</p>
         {tags && (
           <div className={Styles.tags}>
             {tags.map((tag) => (
@@ -45,8 +42,14 @@ export default async function Book({ params }: { params: { slug: string } }) {
             ))}
           </div>
         )}
+        <div className={Styles.meta}>
+          <p>Total pages: {pages?.length}</p>
+          <Link className="btn" href={`/book/edit/${book.slug}`}>
+            Edit Book
+          </Link>
+        </div>
       </div>
-      <Grid numOfCol="5">
+      <Grid gridColToggle>
         {pages &&
           pages.map((page, i) => (
             <div style={{ textAlign: "center" }} key={i + 1}>
