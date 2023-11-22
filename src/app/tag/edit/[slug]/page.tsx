@@ -6,17 +6,17 @@ export default async function EditTag({
 }: {
   params: { slug: string };
 }) {
-  const tags = await prisma.tag.findMany({
+  const tag = await prisma.tag.findMany({
     where: {
-      slug: params.slug,
+      id: Number(params.slug),
     },
   });
 
   return (
     <div style={{ maxWidth: "300px"}} className="container">
-      <h1>Edit {tags[0].name}</h1>
+      <h1>Edit {tag[0].name}</h1>
       <p>Update details below:</p>
-      <TagForm data={tags[0]} />
+      <TagForm data={tag[0]} />
     </div>
   );
 }
