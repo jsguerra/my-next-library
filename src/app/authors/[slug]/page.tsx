@@ -33,7 +33,7 @@ export default async function Author({ params }: { params: { slug: string } }) {
           </Link>
         </div>
       </div>
-      <Grid numOfCol={author.books.length > 0 ? "5" : "1"}>
+      <Grid>
         {author.books.length > 0 ? "" : <p>No books by author yet</p>}
         {author.books &&
           author.books.map((book, i) => {

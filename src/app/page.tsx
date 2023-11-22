@@ -32,7 +32,7 @@ export default async function Home() {
           </div>
         )}
       </div>
-      <Grid numOfCol={books.length > 0 ? "5" : "1"}>
+      <Grid>
         {books.length > 0 ? "" : <p>No books in My Next Library yet</p>}
         {books &&
           books.map((book) => {

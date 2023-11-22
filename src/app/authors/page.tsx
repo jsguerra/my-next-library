@@ -22,7 +22,7 @@ export default async function AuthorsDirecotry() {
       </div>
       <p>Filter by letter</p>
 
-      <Grid numOfCol={authors.length > 0 ? "5" : "1"}>
+      <Grid>
         {authors.length > 0 ? "" : <p>No authors in My Next Library yet</p>}
         {authors &&
           authors.map((author) => {

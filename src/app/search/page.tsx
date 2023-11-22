@@ -28,7 +28,7 @@ export default async function Search({
           <p>Page: 1 of 1</p>
         </div>
       </div>
-      <Grid numOfCol={books.length > 0 ? "5" : "1"}>
+      <Grid>
         {books.length > 0 ? "" : <p>No results for search term</p>}
         {books &&
           books.map((book) => {

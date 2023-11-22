@@ -26,7 +26,7 @@ export default async function Tag({ params }: { params: { slug: string } }) {
           <p>Page: 1 of 1</p>
         </div>
       </div>
-      <Grid numOfCol={tags[0].books.length > 0 ? "5" : "1"}>
+      <Grid>
         {tags[0].books.length > 0 ? "" : <p>No books in this tag yet</p>}
         {tags[0].books.length > 0 &&
           tags.map((tag, i) => {

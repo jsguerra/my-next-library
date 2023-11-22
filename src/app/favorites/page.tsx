@@ -22,7 +22,7 @@ export default async function Favorites() {
           <p>Page: 1 of 1</p>
         </div>
       </div>
-      <Grid numOfCol={favorites.length > 0 ? "5" : "1"}>
+      <Grid>
         {favorites.length > 0 ? "" : <p>No books in my favorites yet</p>}
         {favorites &&
           favorites.map((favorite) => {
