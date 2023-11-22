@@ -82,3 +82,17 @@
     grid-template-columns: 1fr;
   }
 }
+
+.grid-btn-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto 10px;
+  max-width: 1180px;
+}
+
+.grid-btn-container button {
+  border-radius: 4px;
+  padding: 7px 15px;
+}
