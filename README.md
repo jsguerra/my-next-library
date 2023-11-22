@@ -16,7 +16,7 @@ A custom Next.js 14 Library App using server actions.
 - [x] Search componnt bug on results page
 - [ ] Pagination component
 - [ ] Add pagination to pages (home, tags, favorites, search)
-- [ ] Add Grid column toggle
+- [x] Add Grid column toggle
 - [ ] Filter component
 
 ## Getting Started
