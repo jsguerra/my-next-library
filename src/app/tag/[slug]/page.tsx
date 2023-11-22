@@ -25,7 +25,7 @@ export default async function Tag({ params }: { params: { slug: string } }) {
           <p>Total books: {tags.length}</p>
           <p>Page: 1 of 1</p>
         </div>
-        <Link href={`/tag/edit/${tags[0].slug}`} className="btn">Edit Tag</Link>
+        <Link href={`/tag/edit/${tags[0].id}`} className="btn">Edit Tag</Link>
       </div>
       <Grid>
         {tags[0].books.length > 0 ? "" : <p>No books in this tag yet</p>}
