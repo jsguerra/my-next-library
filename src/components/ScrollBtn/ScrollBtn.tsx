@@ -11,7 +11,7 @@ export default function ScrollBtn() {
           window.scrollTo({ top: 0, behavior: "smooth" });
         }}
       >
-        scroll &uarr;
+        &uarr;
       </button>
       <button
         className="btn scroll-bottom"
@@ -19,7 +19,7 @@ export default function ScrollBtn() {
           window.scrollTo(0, document.body.scrollHeight);
         }}
       >
-        scroll &darr;
+        &darr;
       </button>
     </div>
   );
