@@ -2,11 +2,14 @@ A custom Next.js 14 Library App using server actions.
 
 ## To do
 - [ ] Author edit page
-- [ ] Author edit/delete actions
+- [ ] Author edit actions
+- [ ] Author delete actions
 - [ ] Book edit page
-- [ ] Book edit/delete actions
-- [ ] Tag edit page
-- [ ] Tag edit/delete actions
+- [ ] Book edit actions
+- [ ] Book delete actions
+- [x] Tag edit page
+- [ ] Tag edit actions
+- [ ] Tag delete actions
 - [x] Update author thumbnails preview
 - [x] Update tag page
 - [x] Favorites page
