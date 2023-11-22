@@ -8,8 +8,8 @@ A custom Next.js 14 Library App using server actions.
 - [ ] Book edit actions
 - [ ] Book delete actions
 - [x] Tag edit page
-- [ ] Tag edit actions
-- [ ] Tag delete actions
+- [x] Tag edit actions
+- [x] Tag delete actions
 - [x] Update author thumbnails preview
 - [x] Update tag page
 - [x] Favorites page
@@ -21,6 +21,7 @@ A custom Next.js 14 Library App using server actions.
 - [ ] Add pagination to pages (home, tags, favorites, search)
 - [x] Add Grid column toggle
 - [ ] Filter component
+- [ ] Add labels to form inputs
 
 ## Getting Started
 
