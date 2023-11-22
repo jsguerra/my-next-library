@@ -1,18 +1,33 @@
 "use client";
 
 import { useRef } from "react";
-import { tagAction } from "@/actions/tagActions";
+import { useRouter } from "next/navigation";
+import {
+  tagAction,
+  tagEditAction,
+  tagDeleteAction,
+} from "@/actions/tagActions";
 import Styles from "./TagForm.module.css";
 
 interface TagFormProps {
   data?: {
+    id: number;
     name: string;
     slug: string;
-  }
+  };
 }
 
 export default function TagForm({ data }: TagFormProps) {
   const ref = useRef<HTMLFormElement>(null);
+  const router = useRouter();
+
+  const handleDelete = async () => {
+    if (data) {
+      const formData = new FormData(ref.current!);
+      tagDeleteAction(formData);
+      router.push("/");
+    }
+  };
 
   return (
     <form
@@ -22,12 +37,20 @@ export default function TagForm({ data }: TagFormProps) {
 
         if (!data) {
           await tagAction(formData);
+        } else {
+          await tagEditAction(formData);
         }
-
-        // Add edit action here
       }}
       className={Styles.form}
     >
+      {data && (
+        <input
+          name="id"
+          type="hidden"
+          autoComplete="off"
+          defaultValue={data?.id}
+        />
+      )}
       <input
         name="name"
         placeholder="Name"
@@ -45,6 +68,15 @@ export default function TagForm({ data }: TagFormProps) {
       <button className="btn" type="submit">
         {data ? "Edit Tag" : "Add Tag"}
       </button>
+      {data && (
+        <button
+          className="btn danger"
+          type="button"
+          onClick={handleDelete}
+        >
+          Delete Tag
+        </button>
+      )}
     </form>
   );
 }
