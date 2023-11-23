@@ -66,7 +66,7 @@ export default function TagForm({ data }: TagFormProps) {
         defaultValue={data?.slug}
       />
       <button className="btn" type="submit">
-        {data ? "Edit Tag" : "Add Tag"}
+        {data ? "Update Tag" : "Add Tag"}
       </button>
       {data && (
         <button
