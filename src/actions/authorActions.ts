@@ -52,3 +52,7 @@ export async function authorAction(data: FormData) {
 
   return { success: true };
 }
+
+export async function authorEditAction(data: FormData) {}
+
+export async function authorDeleteAction(data: FormData) {}
