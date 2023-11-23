@@ -79,5 +79,11 @@ export async function bookAction(data: FormData) {
     },
   });
 
+  revalidatePath("/");
+
   return { success: true };
 }
+
+export async function bookEditAction(data: FormData) {}
+
+export async function bookDeleteAction(data: FormData) {}
