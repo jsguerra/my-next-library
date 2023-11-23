@@ -1,9 +1,6 @@
 A custom Next.js 14 Library App using server actions.
 
 ## To do
-- [ ] Author edit page
-- [ ] Author edit actions
-- [ ] Author delete actions
 - [ ] Book edit page
 - [ ] Book edit actions
 - [ ] Book delete actions
@@ -22,6 +19,12 @@ A custom Next.js 14 Library App using server actions.
 - [x] Add Grid column toggle
 - [ ] Filter component
 - [ ] Add labels to form inputs
+
+> [!NOTE]
+> The tasks below have been deferred for a future time
+> - [ ] Author edit page
+> - [ ] Author edit actions
+> - [ ] Author delete actions
 
 ## Getting Started
 
