@@ -103,6 +103,11 @@ input[type="checkbox"] {
   height: 20px;
 }
 
+input:disabled {
+  color: #979EAA;
+  cursor: not-allowed;
+}
+
 select {
   background-color: #374151;
   border: 0;
@@ -110,6 +115,10 @@ select {
   color: white;
   padding: 10px;
   width: 100%;
+}
+
+select:disabled {
+  cursor: not-allowed;
 }
 
 ::placeholder {
