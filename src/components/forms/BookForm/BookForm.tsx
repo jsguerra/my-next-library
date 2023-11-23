@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { useRouter } from "next/navigation";
 import { bookAction } from "@/actions/bookActions";
 import Styles from "./BookForm.module.css";
 
@@ -22,10 +23,19 @@ interface TagType {
 interface BookFormProps {
   authors: AuthorType[];
   tags: TagType[];
+  data?: {
+    id: number;
+    title: string;
+    slug: string;
+    pages: string;
+    favorite: boolean;
+    tag: TagType[];
+  };
 }
 
-export function BookForm({ authors, tags }: BookFormProps) {
+export function BookForm({ data, authors, tags }: BookFormProps) {
   const ref = useRef<HTMLFormElement>(null);
+  const router = useRouter();
 
   return (
     <form
@@ -37,17 +47,27 @@ export function BookForm({ authors, tags }: BookFormProps) {
       }}
       className={Styles.form}
     >
+      {data && (
+        <input
+          name="id"
+          type="hidden"
+          autoComplete="off"
+          defaultValue={data?.id}
+        />
+      )}
       <input
         autoComplete="off"
         name="title"
         placeholder="Book title"
         type="text"
+        defaultValue={data?.title}
       />
       <input
         autoComplete="off"
         name="slug"
         placeholder="Book slug"
         type="text"
+        defaultValue={data?.slug}
       />
       <input
         accept="image/png, image/jpeg"
@@ -65,7 +85,12 @@ export function BookForm({ authors, tags }: BookFormProps) {
           ))}
       </select>
       <label className={Styles["check-box"]} htmlFor="favorite-id">
-        <input id="favorite-id" name="favorite" type="checkbox" />{" "}
+        <input
+          id="favorite-id"
+          name="favorite"
+          type="checkbox"
+          checked={data?.favorite}
+        />{" "}
         <span>Favorite</span>
       </label>
       {tags.length > 0 && (
@@ -79,7 +104,7 @@ export function BookForm({ authors, tags }: BookFormProps) {
         </div>
       )}
       <button className="btn" type="submit">
-        Add book
+        {data ? "Edit Book" : "Add Book"}
       </button>
     </form>
   );
