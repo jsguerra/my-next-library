@@ -18,13 +18,13 @@ A custom Next.js 14 Library App using server actions.
 - [ ] Add pagination to pages (home, tags, favorites, search)
 - [x] Add Grid column toggle
 - [ ] Filter component
-- [ ] Add labels to form inputs
 
 > [!NOTE]
 > The tasks below have been deferred for a future time
 > - [ ] Author edit page
 > - [ ] Author edit actions
 > - [ ] Author delete actions
+> - [ ] Add labels to form inputs
 
 ## Getting Started
 
