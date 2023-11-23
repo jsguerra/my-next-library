@@ -28,7 +28,7 @@ export default async function Author({ params }: { params: { slug: string } }) {
           }}
         >
           <p>Total books by author: {author.books.length}</p>
-          <Link className="btn" href="/authors/edit/lorem-ipsum">
+          <Link className="btn" href={`/authors/edit/${author.id}`}>
             Edit Author
           </Link>
         </div>
