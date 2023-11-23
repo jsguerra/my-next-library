@@ -44,7 +44,7 @@ export default async function Book({ params }: { params: { slug: string } }) {
         )}
         <div className={Styles.meta}>
           <p>Total pages: {pages?.length}</p>
-          <Link className="btn" href={`/book/edit/${book.slug}`}>
+          <Link className="btn" href={`/book/edit/${book.id}`}>
             Edit Book
           </Link>
         </div>
