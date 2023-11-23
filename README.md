@@ -3,7 +3,6 @@ A custom Next.js 14 Library App using server actions.
 ## To do
 - [ ] Book edit page
 - [ ] Book edit actions
-- [ ] Book delete actions
 - [x] Tag edit page
 - [x] Tag edit actions
 - [x] Tag delete actions
@@ -25,6 +24,7 @@ A custom Next.js 14 Library App using server actions.
 > - [ ] Author edit actions
 > - [ ] Author delete actions
 > - [ ] Add labels to form inputs
+> - [ ] Book delete actions
 
 ## Getting Started
 
