@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { useRouter } from "next/navigation";
-import { bookAction } from "@/actions/bookActions";
+import { bookAction, bookEditAction } from "@/actions/bookActions";
 import Styles from "./BookForm.module.css";
 
 interface AuthorType {
@@ -27,15 +27,18 @@ interface BookFormProps {
     id: number;
     title: string;
     slug: string;
-    pages: string;
+    pages: string | null;
     favorite: boolean;
     tag: TagType[];
-  };
+    author: AuthorType;
+  } | null;
 }
 
 export function BookForm({ data, authors, tags }: BookFormProps) {
   const ref = useRef<HTMLFormElement>(null);
   const router = useRouter();
+
+  console.log(data?.author);
 
   return (
     <form
@@ -43,7 +46,11 @@ export function BookForm({ data, authors, tags }: BookFormProps) {
       action={async (formData) => {
         ref.current?.reset();
 
-        await bookAction(formData);
+        if (!data) {
+          await bookAction(formData);
+        } else {
+          await bookEditAction(formData);
+        }
       }}
       className={Styles.form}
     >
@@ -75,11 +82,18 @@ export function BookForm({ data, authors, tags }: BookFormProps) {
         multiple
         type="file"
       />
-      <select name="authorId" id="author-id">
+      <select
+        name="authorId"
+        id="author-id"
+      >
         <option value="">--Please choose an author--</option>
         {authors &&
           authors.map((author) => (
-            <option key={author.id} value={author.id}>
+            <option
+              key={author.id}
+              value={author.id}
+              selected={data?.author.id === author.id ? true : false}
+            >
               {author.name}
             </option>
           ))}
@@ -89,22 +103,27 @@ export function BookForm({ data, authors, tags }: BookFormProps) {
           id="favorite-id"
           name="favorite"
           type="checkbox"
-          checked={data?.favorite}
+          defaultChecked={data?.favorite}
         />{" "}
         <span>Favorite</span>
       </label>
       {tags.length > 0 && (
         <div className={Styles.selection}>
-          {tags.map((tag) => (
+          {tags.map((tag, i) => (
             <label className={Styles["check-box"]} key={tag.id}>
-              <input name="tag" type="checkbox" value={tag.id} />{" "}
+              <input
+                name="tag"
+                type="checkbox"
+                value={tag.id}
+                defaultChecked={data?.tag[i] ? true : false}
+              />{" "}
               <span>{tag.name}</span>
             </label>
           ))}
         </div>
       )}
       <button className="btn" type="submit">
-        {data ? "Edit Book" : "Add Book"}
+        {data ? "Update Book" : "Add Book"}
       </button>
     </form>
   );
