@@ -10,6 +10,10 @@ export default async function EditBook({
     where: {
       id: Number(params.slug),
     },
+    include: {
+      tag: true,
+      author: true
+    }
   });
   const authors = await prisma.author.findMany();
   const tags = await prisma.tag.findMany();
