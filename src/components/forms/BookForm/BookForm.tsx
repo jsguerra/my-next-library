@@ -38,7 +38,7 @@ export function BookForm({ data, authors, tags }: BookFormProps) {
   const ref = useRef<HTMLFormElement>(null);
   const router = useRouter();
 
-  console.log(data?.author);
+  console.log(data);
 
   return (
     <form
@@ -85,6 +85,7 @@ export function BookForm({ data, authors, tags }: BookFormProps) {
       <select
         name="authorId"
         id="author-id"
+        defaultValue={data?.author.id}
       >
         <option value="">--Please choose an author--</option>
         {authors &&
@@ -92,7 +93,6 @@ export function BookForm({ data, authors, tags }: BookFormProps) {
             <option
               key={author.id}
               value={author.id}
-              selected={data?.author.id === author.id ? true : false}
             >
               {author.name}
             </option>
@@ -109,17 +109,19 @@ export function BookForm({ data, authors, tags }: BookFormProps) {
       </label>
       {tags.length > 0 && (
         <div className={Styles.selection}>
-          {tags.map((tag, i) => (
+          {tags.map((tag, i) => {
+            console.log(tag, i);
+            return (
             <label className={Styles["check-box"]} key={tag.id}>
               <input
                 name="tag"
                 type="checkbox"
                 value={tag.id}
-                defaultChecked={data?.tag[i] ? true : false}
+                checked={data?.tag.includes(tag.id)}
               />{" "}
               <span>{tag.name}</span>
             </label>
-          ))}
+          )})}
         </div>
       )}
       <button className="btn" type="submit">
