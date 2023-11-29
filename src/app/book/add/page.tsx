@@ -8,7 +8,7 @@ export default async function AddBook() {
   return (
     <div style={{ maxWidth: "600px" }} className="container">
       <h1>Add Book</h1>
-      <BookForm authors={authors} tags={tags} />
+      <BookForm authors={authors} tags={tags} isEdit={false} />
     </div>
   );
 }

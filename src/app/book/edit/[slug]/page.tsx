@@ -23,7 +23,7 @@ export default async function EditBook({
       <h1>Edit {book?.title}</h1>
       <p>Update details below:</p>
 
-      <BookForm data={book} authors={authors} tags={tags} />
+      <BookForm data={book} authors={authors} tags={tags} isEdit />
     </div>
   );
 }
