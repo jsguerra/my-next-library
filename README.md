@@ -1,8 +1,8 @@
 A custom Next.js 14 Library App using server actions.
 
 ## To do
-- [ ] Book edit page
-- [ ] Book edit actions
+- [x] Book edit page
+- [x] Book edit actions
 - [x] Tag edit page
 - [x] Tag edit actions
 - [x] Tag delete actions
@@ -14,9 +14,12 @@ A custom Next.js 14 Library App using server actions.
 - [x] Search component
 - [x] Search componnt bug on results page
 - [ ] Pagination component
+- [ ] Pagination story
 - [ ] Add pagination to pages (home, tags, favorites, search)
 - [x] Add Grid column toggle
 - [ ] Filter component
+- [ ] Filter story
+- [x] Install Storybook for component testing
 
 > [!NOTE]
 > The tasks below have been deferred for a future time
