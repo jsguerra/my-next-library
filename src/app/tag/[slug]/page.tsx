@@ -30,21 +30,22 @@ export default async function Tag({ params }: { params: { slug: string } }) {
       <Grid>
         {tags[0].books.length > 0 ? "" : <p>No books in this tag yet</p>}
         {tags[0].books.length > 0 &&
-          tags.map((tag, i) => {
-            const authorDirectory = tag.books[i].author.slug;
+          tags[0].books.map((book, i) => {
+            const authorDirectory = book.author.slug;
             const firstLetter = authorDirectory.slice(0, 1);
-            const pages = tag.books[i].pages?.split(", ");
+            const pages = book.pages?.split(", ");
+            console.log(book);
 
             return (
-              <div style={{ textAlign: "center" }} key={tag.books[i].id}>
+              <div style={{ textAlign: "center" }} key={book.id}>
                 {pages && (
-                  <Link href={`/book/${tag.books[i].slug}`}>
+                  <Link href={`/book/${book.slug}`}>
                     <img
-                      src={`/library/${firstLetter}/${authorDirectory}/${tag.books[i].slug}/${pages[0]}`}
+                      src={`/library/${firstLetter}/${authorDirectory}/${book.slug}/${pages[0]}`}
                     />
                   </Link>
                 )}
-                <p>{tag.books[i].title}</p>
+                <p>{book.title}</p>
               </div>
             );
           })}
