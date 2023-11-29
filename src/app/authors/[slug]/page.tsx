@@ -44,7 +44,7 @@ export default async function Author({ params }: { params: { slug: string } }) {
                 {pages && (
                   <Link href={`/book/${book.slug}`}>
                     <img
-                      src={`/library/${firstLetter}/${authorDirectory}/${book.title}/${pages[i]}`}
+                      src={`/library/${firstLetter}/${authorDirectory}/${book.slug}/${pages[0]}`}
                     />
                   </Link>
                 )}
