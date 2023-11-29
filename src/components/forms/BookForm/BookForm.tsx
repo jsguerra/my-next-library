@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { bookAction, bookEditAction } from "@/actions/bookActions";
 import Styles from "./BookForm.module.css";
@@ -23,6 +23,7 @@ interface TagType {
 interface BookFormProps {
   authors: AuthorType[];
   tags: TagType[];
+  isEdit: boolean;
   data?: {
     id: number;
     title: string;
@@ -34,11 +35,31 @@ interface BookFormProps {
   } | null;
 }
 
-export function BookForm({ data, authors, tags }: BookFormProps) {
+export function BookForm({ data, authors, isEdit, tags }: BookFormProps) {
   const ref = useRef<HTMLFormElement>(null);
+  // tags.includes({ id: 1, name: "name", slug: "slug" });
+  const [selectedTags, setSelectedTags] = useState<number[]>([]);
   const router = useRouter();
 
   console.log(data);
+
+  useEffect(() => {
+    if (data) {
+      const initialSelectedTags = data.tag.map((item) => item.id);
+      setSelectedTags(initialSelectedTags);
+    }
+  }, [data]);
+
+  const handleCheckboxChange = (tagId: number) => {
+    setSelectedTags((prevSelectedTags) => {
+      if (prevSelectedTags.includes(tagId)) {
+        return prevSelectedTags.filter((id) => id !== tagId);
+      } else {
+        return [...prevSelectedTags, tagId];
+      }
+    });
+  };
+  
 
   return (
     <form
@@ -76,24 +97,21 @@ export function BookForm({ data, authors, tags }: BookFormProps) {
         type="text"
         defaultValue={data?.slug}
       />
-      <input
-        accept="image/png, image/jpeg"
-        name="images"
-        multiple
-        type="file"
-      />
-      <select
-        name="authorId"
-        id="author-id"
-        defaultValue={data?.author.id}
-      >
+      {isEdit === false ? (
+        <input
+          accept="image/png, image/jpeg"
+          name="images"
+          multiple
+          type="file"
+        />
+      ) : (
+        <input name="pages" type="text" defaultValue={data?.pages ?? ""} />
+      )}
+      <select name="authorId" id="author-id" defaultValue={data?.author.id}>
         <option value="">--Please choose an author--</option>
         {authors &&
           authors.map((author) => (
-            <option
-              key={author.id}
-              value={author.id}
-            >
+            <option key={author.id} value={author.id}>
               {author.name}
             </option>
           ))}
@@ -109,19 +127,20 @@ export function BookForm({ data, authors, tags }: BookFormProps) {
       </label>
       {tags.length > 0 && (
         <div className={Styles.selection}>
-          {tags.map((tag, i) => {
-            console.log(tag, i);
+          {tags.map((tag) => {
             return (
-            <label className={Styles["check-box"]} key={tag.id}>
-              <input
-                name="tag"
-                type="checkbox"
-                value={tag.id}
-                checked={data?.tag.includes(tag.id)}
-              />{" "}
-              <span>{tag.name}</span>
-            </label>
-          )})}
+              <label className={Styles["check-box"]} key={tag.id}>
+                <input
+                  name="tag"
+                  type="checkbox"
+                  value={tag.id}
+                  checked={selectedTags.includes(tag.id)}
+                  onChange={() => handleCheckboxChange(tag.id)}
+                />{" "}
+                <span>{tag.name}</span>
+              </label>
+            );
+          })}
         </div>
       )}
       <button className="btn" type="submit">
