@@ -2,14 +2,33 @@ import Link from "next/link";
 import prisma from "@/lib/prisma";
 import Styles from "./page.module.css";
 import Grid from "@/components/Grid/Grid";
+import Pagination from "@/components/Pagination/Pagination";
 
-export default async function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
+  const page =
+    typeof searchParams.page === "string" ? Number(searchParams.page) : 1;
+  const limit =
+    typeof searchParams.limit === "string" ? Number(searchParams.limit) : 10;
+
   const books = await prisma.book.findMany({
+    skip: (page - 1) * limit,
+    take: limit,
+    orderBy: {
+      id: "desc",
+    },
     include: {
       author: true,
     },
   });
+  const totalRecords = await prisma.book.count();
+
   const tags = await prisma.tag.findMany();
+
+  const pages = Math.ceil(totalRecords / limit);
 
   return (
     <>
@@ -17,7 +36,9 @@ export default async function Home() {
         <h1>Latest Books in My Next Library</h1>
         <div className={Styles.meta}>
           <p>Total books in my library: {books.length}</p>
-          <p>Page: 1 of 1</p>
+          <p>
+            Page: {page} of {totalRecords}
+          </p>
         </div>
         {tags && (
           <div className={Styles.tags}>
@@ -54,7 +75,7 @@ export default async function Home() {
             );
           })}
       </Grid>
-      <p style={{ textAlign: "center", padding: "1rem" }}>Pagination goes here</p>
+      <Pagination page={page} pages={pages} />
     </>
   );
 }
