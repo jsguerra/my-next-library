@@ -4,9 +4,11 @@ import Styles from "./Pagination.module.css";
 interface PaginationProps {
   page: number;
   pages: number;
+  slug?: string;
 }
 
-const Pagination: React.FC<PaginationProps> = ({ page, pages }) => {
+const Pagination: React.FC<PaginationProps> = ({ page, pages, slug }) => {
+  const pathName = slug ? slug : "/";
   const buttons = [];
 
   for (let i = 1; i <= pages; i++) {
@@ -19,7 +21,7 @@ const Pagination: React.FC<PaginationProps> = ({ page, pages }) => {
     ) {
       buttons.push(
         <li key={`page-${i + 1}`}>
-          <Link className={`${i === page ? Styles.active : ''}`} href={`/?page=${i}`}>{i}</Link>
+          <Link className={`${i === page ? Styles.active : ''}`} href={`${pathName}?page=${i}`}>{i}</Link>
         </li>
       );
     }
@@ -31,7 +33,7 @@ const Pagination: React.FC<PaginationProps> = ({ page, pages }) => {
         <li>
           <Link
             className={Styles.previous}
-            href={`/?page=${page === 1 ? page : page - 1}`}
+            href={`${pathName}?page=${page === 1 ? page : page - 1}`}
           >
             <span className="sr-only">Previous</span>
             <svg
@@ -54,7 +56,7 @@ const Pagination: React.FC<PaginationProps> = ({ page, pages }) => {
         <li>
           <Link
             className={Styles.next}
-            href={`/?page=${page >= pages ? page : page + 1}`}
+            href={`${pathName}?page=${page >= pages ? page : page + 1}`}
           >
             <span className="sr-only">Next</span>
             <svg
