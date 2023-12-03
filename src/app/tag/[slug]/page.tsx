@@ -34,7 +34,6 @@ export default async function Tag({ params }: { params: { slug: string } }) {
             const authorDirectory = book.author.slug;
             const firstLetter = authorDirectory.slice(0, 1);
             const pages = book.pages?.split(", ");
-            console.log(book);
 
             return (
               <div style={{ textAlign: "center" }} key={book.id}>
