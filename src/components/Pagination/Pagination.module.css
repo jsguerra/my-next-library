@@ -37,3 +37,7 @@
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
 }
+
+.pagination .active {
+  background-color: rgb(55, 65, 81);
+}

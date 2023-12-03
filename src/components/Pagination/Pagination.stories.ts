@@ -14,18 +14,21 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    pages: [1, 2, 3, 4, 5],
+    page: 1,
+    pages: 5,
   },
 };
 
 export const Short: Story = {
   args: {
-    pages: [1, 2, 3],
+    page: 2,
+    pages: 3,
   },
 };
 
 export const Long: Story = {
   args: {
-    pages: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+    page: 1,
+    pages: 25,
   },
 };

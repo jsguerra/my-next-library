@@ -19,7 +19,7 @@ const Pagination: React.FC<PaginationProps> = ({ page, pages }) => {
     ) {
       buttons.push(
         <li key={`page-${i + 1}`}>
-          <Link href={`/?page=${i}`}>{i}</Link>
+          <Link className={`${i === page ? Styles.active : ''}`} href={`/?page=${i}`}>{i}</Link>
         </li>
       );
     }
