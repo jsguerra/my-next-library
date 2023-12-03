@@ -13,7 +13,7 @@ export default function Grid({ gridColToggle = false, children }: GridProps) {
   const colNums = [5, 4, 3, 2, 1];
 
   return (
-    <div>
+    <div className={styles.parent}>
       {gridColToggle && (
         <div className={styles["grid-btn-container"]}>
           <span>Toggle Grid Columns: </span>
