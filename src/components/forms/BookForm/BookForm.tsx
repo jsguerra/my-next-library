@@ -41,8 +41,6 @@ export function BookForm({ data, authors, isEdit, tags }: BookFormProps) {
   const [selectedTags, setSelectedTags] = useState<number[]>([]);
   const router = useRouter();
 
-  console.log(data);
-
   useEffect(() => {
     if (data) {
       const initialSelectedTags = data.tag.map((item) => item.id);
@@ -72,6 +70,8 @@ export function BookForm({ data, authors, isEdit, tags }: BookFormProps) {
         } else {
           await bookEditAction(formData);
         }
+
+        router.push("/");
       }}
       className={Styles.form}
     >
