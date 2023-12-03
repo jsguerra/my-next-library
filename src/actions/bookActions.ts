@@ -103,8 +103,6 @@ export async function bookEditAction(data: FormData) {
     []
   );
 
-  // console.log("Tags array: ", tagIdsArray);
-
   const favorite = favIsOn === "on" ? true : false;
 
   const author = await prisma.author.findMany({
@@ -112,8 +110,6 @@ export async function bookEditAction(data: FormData) {
       id: Number(authorId),
     },
   });
-
-  console.log("Data: ", data);
 
     // Add entry into database
     await prisma.book.update({
