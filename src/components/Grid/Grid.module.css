@@ -96,3 +96,7 @@
   border-radius: 4px;
   padding: 7px 15px;
 }
+
+.parent {
+  margin-bottom: 2rem;
+}
