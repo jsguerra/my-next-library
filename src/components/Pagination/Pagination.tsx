@@ -11,11 +11,11 @@ const Pagination: React.FC<PaginationProps> = ({ page, pages, slug }) => {
   const pathName = slug ? slug : "/";
   const buttons = [];
 
-  const maxButtons = 5;  // Set the maximum number of buttons to display
+  const maxButtons = 5; // Set the maximum number of buttons to display
 
   let startPage = 1;
-  let endPage = Math.min(pages, maxButtons);  // Ensure the range doesn't exceed the total number of pages
-  
+  let endPage = Math.min(pages, maxButtons); // Ensure the range doesn't exceed the total number of pages
+
   if (page > pages - maxButtons) {
     // If the current page is close to the end, adjust the range
     startPage = Math.max(1, pages - maxButtons + 1);
@@ -43,10 +43,12 @@ const Pagination: React.FC<PaginationProps> = ({ page, pages, slug }) => {
     <nav className={Styles.pagination}>
       <ul>
         <li>
-          <Link
-            className={Styles.previous}
-            href={`${pathName}?page=${page === 1 ? page : page - 1}`}
-          >
+          <Link className={Styles.previous} href={`${pathName}?page=1`}>
+            First
+          </Link>
+        </li>
+        <li>
+          <Link href={`${pathName}?page=${page === 1 ? page : page - 1}`}>
             <span className="sr-only">Previous</span>
             <svg
               aria-hidden="true"
@@ -66,10 +68,7 @@ const Pagination: React.FC<PaginationProps> = ({ page, pages, slug }) => {
         </li>
         {buttons}
         <li>
-          <Link
-            className={Styles.next}
-            href={`${pathName}?page=${page >= pages ? page : page + 1}`}
-          >
+          <Link href={`${pathName}?page=${page >= pages ? page : page + 1}`}>
             <span className="sr-only">Next</span>
             <svg
               aria-hidden="true"
@@ -85,6 +84,11 @@ const Pagination: React.FC<PaginationProps> = ({ page, pages, slug }) => {
                 d="m1 9 4-4-4-4"
               />
             </svg>
+          </Link>
+        </li>
+        <li>
+          <Link className={Styles.next} href={`${pathName}?page=${pages}`}>
+            Last
           </Link>
         </li>
       </ul>
