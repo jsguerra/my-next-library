@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { bookAction, bookEditAction } from "@/actions/bookActions";
 import Styles from "./BookForm.module.css";
 
-interface AuthorType {
+export interface AuthorType {
   id: number;
   createdAt: Date;
   updatedAt: Date;
@@ -14,13 +14,13 @@ interface AuthorType {
   thumbnail: string | null;
 }
 
-interface TagType {
+export interface TagType {
   id: number;
   name: string;
   slug: string;
 }
 
-interface BookFormProps {
+export interface BookFormProps {
   authors: AuthorType[];
   tags: TagType[];
   isEdit: boolean;
