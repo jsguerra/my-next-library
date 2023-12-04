@@ -1,5 +1,6 @@
 import Link from "next/link";
 import prisma from "@/lib/prisma";
+import AZFilter from "@/components/AZFilter/AZFilter";
 import Grid from "@/components/Grid/Grid";
 
 export default async function AuthorsDirecotry() {
@@ -20,7 +21,9 @@ export default async function AuthorsDirecotry() {
           Add Author
         </Link>
       </div>
-      <p>Filter by letter</p>
+      <AZFilter
+        authorName={authors}
+      />
 
       <Grid>
         {authors.length > 0 ? "" : <p>No authors in My Next Library yet</p>}
