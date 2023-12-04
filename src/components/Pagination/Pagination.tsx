@@ -11,20 +11,32 @@ const Pagination: React.FC<PaginationProps> = ({ page, pages, slug }) => {
   const pathName = slug ? slug : "/";
   const buttons = [];
 
-  for (let i = 1; i <= pages; i++) {
-    if (
-      i === page ||
-      i === page + 1 ||
-      i === page + 2 ||
-      i === page + 3 ||
-      i === page + 4
-    ) {
-      buttons.push(
-        <li key={`page-${i + 1}`}>
-          <Link className={`${i === page ? Styles.active : ''}`} href={`${pathName}?page=${i}`}>{i}</Link>
-        </li>
-      );
-    }
+  const maxButtons = 5;  // Set the maximum number of buttons to display
+
+  let startPage = 1;
+  let endPage = Math.min(pages, maxButtons);  // Ensure the range doesn't exceed the total number of pages
+  
+  if (page > pages - maxButtons) {
+    // If the current page is close to the end, adjust the range
+    startPage = Math.max(1, pages - maxButtons + 1);
+    endPage = pages;
+  } else {
+    // Otherwise, calculate the range based on the current page
+    startPage = Math.max(1, page - Math.floor(maxButtons / 2));
+    endPage = Math.min(pages, startPage + maxButtons - 1);
+  }
+
+  for (let i = startPage; i <= endPage; i++) {
+    buttons.push(
+      <li key={`page-${i + 1}`}>
+        <Link
+          className={`${i === page ? Styles.active : ""}`}
+          href={`${pathName}?page=${i}`}
+        >
+          {i}
+        </Link>
+      </li>
+    );
   }
 
   return (
