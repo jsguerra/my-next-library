@@ -4,25 +4,48 @@ import { AuthorType } from "../forms/BookForm/BookForm";
 import Styles from "./AZFilter.module.css";
 
 interface AZFilterProps {
-  authorName: AuthorType[];
+  rootPath: string;
 }
 
-const AZFilter: React.FC<AZFilterProps> = ({ authorName = [] }) => {
-  const allLetters: string[] = [];
-
-  authorName.map((author) => allLetters.push(author.name.charAt(0)));
-
-  const allButtons = [...new Set(allLetters)];
+const AZFilter: React.FC<AZFilterProps> = ({ rootPath }) => {
+  const alphabet: string[] = [
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    'X',
+    'Y',
+    'Z',
+  ];
 
   return (
     <div className={Styles.filter}>
-      <button className="btn" type="button">
+      <Link href={`/${rootPath}/`} className="badge">
         View All
-      </button>
-      {allButtons.sort().map((item) => (
-        <button className="btn" key={item} type="button" value={item}>
+      </Link>
+      {alphabet.sort().map((item) => (
+        <Link className="badge" key={item} href={`/${rootPath}/?filter=${item}`}>
           {item}
-        </button>
+        </Link>
       ))}
     </div>
   );
