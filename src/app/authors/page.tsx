@@ -3,8 +3,18 @@ import prisma from "@/lib/prisma";
 import AZFilter from "@/components/AZFilter/AZFilter";
 import Grid from "@/components/Grid/Grid";
 
-export default async function AuthorsDirecotry() {
-  const authors = await prisma.author.findMany();
+export default async function AuthorsDirecotry({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
+  const authors = await prisma.author.findMany({
+    where: {
+      name: {
+        startsWith: searchParams.filter as string
+      }
+    }
+  });
 
   return (
     <div className="container">
@@ -14,6 +24,7 @@ export default async function AuthorsDirecotry() {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          marginBottom: "30px"
         }}
       >
         <p>Total authors: {authors.length}</p>
@@ -21,12 +32,10 @@ export default async function AuthorsDirecotry() {
           Add Author
         </Link>
       </div>
-      <AZFilter
-        authorName={authors}
-      />
+      <AZFilter rootPath="authors" />
 
       <Grid>
-        {authors.length > 0 ? "" : <p>No authors in My Next Library yet</p>}
+        {authors.length > 0 ? "" : <p>No authors yet</p>}
         {authors &&
           authors.map((author) => {
             const directory = author.slug.slice(0, 1);
