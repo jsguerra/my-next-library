@@ -23,7 +23,7 @@ A custom Next.js 14 Library App using server actions.
 - [x] Add Grid column toggle
 - [x] Filter component
 - [x] Filter story
-- [ ] Add filter component to authors directory
+- [x] Add filter component to authors directory
 - [x] Install Storybook for component testing
 
 > [!NOTE]
