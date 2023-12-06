@@ -2,22 +2,43 @@ import prisma from "@/lib/prisma";
 import Link from "next/link";
 import Styles from "./page.module.css";
 import Grid from "@/components/Grid/Grid";
+import Pagination from "@/components/Pagination/Pagination";
 
 export default async function Search({
   searchParams,
 }: {
-  searchParams?: { q?: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
 }) {
+  const page =
+  typeof searchParams?.page === "string" ? Number(searchParams.page) : 1;
+const limit =
+  typeof searchParams?.limit === "string" ? Number(searchParams.limit) : 10;
+
   const books = await prisma.book.findMany({
+    skip: (page - 1) * limit,
+    take: limit,
+    orderBy: {
+      id: "desc",
+    },
     where: {
       title: {
-        contains: searchParams?.q,
+        contains: searchParams?.q as string,
       },
     },
     include: {
       author: true,
     },
   });
+
+  const totalRecords = await prisma.book.count({
+    where: {
+      title: {
+        contains: searchParams?.q as string
+      }
+    }
+  });
+
+  const pages = Math.ceil(totalRecords / limit);
 
   return (
     <>
@@ -50,6 +71,7 @@ export default async function Search({
             );
           })}
       </Grid>
+      {pages >= 2 && <Pagination slug={`/search?q=${searchParams?.q}`} page={page} pages={pages} />}
     </>
   );
 }
