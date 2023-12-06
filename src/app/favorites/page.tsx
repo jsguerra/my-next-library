@@ -18,8 +18,7 @@ export default async function Favorites() {
       <div className="container">
         <h1>Favorites</h1>
         <div className={Styles.meta}>
-          <p>Total books: {favorites.length}</p>
-          <p>Page: 1 of 1</p>
+          <p>Total favorites: {favorites.length}</p>
         </div>
       </div>
       <Grid>
