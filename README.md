@@ -33,10 +33,9 @@ npm install
 - [x] Search componnt bug on results page
 - [x] Pagination component
 - [x] Pagination story
-- [ ] Add pagination to pages
+- [x] Add pagination to pages
   - [x] Home
   - [x] Tags
-  - [ ] Favorites
   - [x] Search
 - [x] Add Grid component
 - [x] Add Grid column toggle
@@ -57,6 +56,7 @@ npm install
 >
 > Optional
 > - [ ] Add pagination to Author directory
+> - [ ] Add pagination to favorites directory
 
 ## Getting Started
 
