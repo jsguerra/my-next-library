@@ -31,7 +31,7 @@ const Pagination: React.FC<PaginationProps> = ({ page, pages, slug }) => {
       <li key={`page-${i + 1}`}>
         <Link
           className={`${i === page ? Styles.active : ""}`}
-          href={`${pathName}?page=${i}`}
+          href={`${pathName}${pathName.includes('?') ? '&' : '?'}page=${i}`}
         >
           {i}
         </Link>
@@ -43,12 +43,19 @@ const Pagination: React.FC<PaginationProps> = ({ page, pages, slug }) => {
     <nav className={Styles.pagination}>
       <ul>
         <li>
-          <Link className={Styles.previous} href={`${pathName}?page=1`}>
+          <Link
+            className={Styles.previous}
+            href={`${pathName}${pathName.includes("?") ? "&" : "?"}page=1`}
+          >
             First
           </Link>
         </li>
         <li>
-          <Link href={`${pathName}?page=${page === 1 ? page : page - 1}`}>
+          <Link
+            href={`${pathName}${pathName.includes("?") ? "&" : "?"}page=${
+              page === 1 ? page : page - 1
+            }`}
+          >
             <span className="sr-only">Previous</span>
             <svg
               aria-hidden="true"
@@ -68,7 +75,11 @@ const Pagination: React.FC<PaginationProps> = ({ page, pages, slug }) => {
         </li>
         {buttons}
         <li>
-          <Link href={`${pathName}?page=${page >= pages ? page : page + 1}`}>
+          <Link
+            href={`${pathName}${pathName.includes("?") ? "&" : "?"}page=${
+              page >= pages ? page : page + 1
+            }`}
+          >
             <span className="sr-only">Next</span>
             <svg
               aria-hidden="true"
@@ -87,7 +98,12 @@ const Pagination: React.FC<PaginationProps> = ({ page, pages, slug }) => {
           </Link>
         </li>
         <li>
-          <Link className={Styles.next} href={`${pathName}?page=${pages}`}>
+          <Link
+            className={Styles.next}
+            href={`${pathName}${
+              pathName.includes("?") ? "&" : "?"
+            }page=${pages}`}
+          >
             Last
           </Link>
         </li>
