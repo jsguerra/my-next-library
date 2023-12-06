@@ -45,8 +45,8 @@ const limit =
       <div className="container">
         <h1>Search Results for: {searchParams?.q}</h1>
         <div className={Styles.meta}>
-          <p>Total books in my library: {books.length}</p>
-          <p>Page: 1 of 1</p>
+          <p>Total search results: {totalRecords}</p>
+          <p>Page: {page} of {pages}</p>
         </div>
       </div>
       <Grid>
