@@ -76,7 +76,7 @@ const Tag: React.FC<TagProps> = async ({ params, searchParams }) => {
             );
           })}
       </Grid>
-      <Pagination slug={`/tag/${params.slug}`} page={page} pages={pages} />
+      {pages >= 2 && <Pagination slug={`/tag/${params.slug}`} page={page} pages={pages} />}
     </>
   );
 };
