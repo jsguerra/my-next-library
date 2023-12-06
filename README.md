@@ -1,4 +1,22 @@
-A custom Next.js 14 Library App using server actions.
+A custom Next.js 14 Library App using server actions, ORM Prisma, and Storybook.
+
+To install run:
+```bash
+npm install
+```
+## Features include
+- Adding author and author picture
+  - File upload uses slug to create folder hierarchy in Public folder
+- Adding books with file upload
+  - Slug is required with author to create folder heirarchy in Public folder
+  - Single or multiple images can be uploaded to create a gallery of pages
+- Adding/editing/deleting tags
+- Global search by title
+- Favorites page to display favorites
+- Paginated gallery
+- Gallery toggle to change number of columns
+- Scroll to top button
+- Author filtering by first name letter
 
 ## To do
 - [x] Book edit page
@@ -19,8 +37,11 @@ A custom Next.js 14 Library App using server actions.
   - [x] Home
   - [x] Tags
   - [ ] Favorites
-  - [ ] Search
+  - [x] Search
+- [x] Add Grid component
 - [x] Add Grid column toggle
+- [x] Add Scroll to top button
+- [x] Add Navigation component
 - [x] Filter component
 - [x] Filter story
 - [x] Add filter component to authors directory
@@ -33,6 +54,9 @@ A custom Next.js 14 Library App using server actions.
 > - [ ] Author delete actions
 > - [ ] Add labels to form inputs
 > - [ ] Book delete actions
+>
+> Optional
+> - [ ] Add pagination to Author directory
 
 ## Getting Started
 
