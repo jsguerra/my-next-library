@@ -75,7 +75,7 @@ export default async function Home({
             );
           })}
       </Grid>
-      <Pagination page={page} pages={pages} />
+      {pages >= 2 && <Pagination page={page} pages={pages} />}
     </>
   );
 }
