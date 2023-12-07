@@ -27,7 +27,7 @@ export async function authorAction(data: FormData) {
     },
   });
 
-  revalidatePath("/admin/create-author");
+  revalidatePath("/authors");
 
   // Upload file to folder
   const file: File | null = data.get("thumbnail") as unknown as File;
