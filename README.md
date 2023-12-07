@@ -46,6 +46,11 @@ npm install
 - [x] Add filter component to authors directory
 - [x] Install Storybook for component testing
 
+> [!WARNING]
+> Bugs to fix
+> - [ ] Uploading multiple pages (images) not in correct order
+> - [ ] Change image uploads directory. Images uploaded to Public folder after produciton are not served from Public folder. Will provide a custom config to server from a local Nginx server.
+
 > [!NOTE]
 > The tasks below have been deferred for a future time
 > - [ ] Author edit page
