@@ -32,7 +32,10 @@ export default async function Book({ params }: { params: { slug: string } }) {
             ""
           )}
         </h1>
-        <p className={Styles.author}>By {book.author.name}</p>
+        <p className={Styles.author}>
+          By{" "}
+          <Link href={`/authors/${book.author.slug}`}>{book.author.name}</Link>
+        </p>
         {tags && (
           <div className={Styles.tags}>
             {tags.map((tag) => (
