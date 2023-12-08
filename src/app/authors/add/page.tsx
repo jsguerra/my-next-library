@@ -9,7 +9,9 @@ export default async function AddAuthor() {
       <h1>Create Author</h1>
       <p>Add your author details.</p>
       <AuthorForm />
-      {authors.length > 0 && (
+      
+      {/* This was for testing only */}
+      {/* {authors.length > 0 && (
         <>
           <h2>List of Authors</h2>
           <ul>
@@ -18,7 +20,7 @@ export default async function AddAuthor() {
             ))}
           </ul>
         </>
-      )}
+      )} */}
     </div>
   );
 }
