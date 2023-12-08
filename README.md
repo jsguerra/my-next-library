@@ -48,7 +48,7 @@ npm install
 
 > [!WARNING]
 > Bugs to fix
-> - [ ] Uploading multiple pages (images) for a book do not display in the correct order
+> - [x] Uploading multiple pages (images) for a book do not display in the correct order, add sorting.
 > - [ ] Change image uploads directory. Images uploaded to Public folder after produciton are not served from Public folder. Will provide a custom config to server from a local Nginx server.
 
 > [!NOTE]
