@@ -60,6 +60,7 @@ export default async function Home({
             const authorDirectory = book.author.slug;
             const firstLetter = authorDirectory.slice(0, 1);
             const pages = book.pages?.split(", ");
+            pages?.sort();
 
             return (
               <div style={{ textAlign: "center" }} key={book.id}>

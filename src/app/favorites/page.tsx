@@ -28,6 +28,7 @@ export default async function Favorites() {
             const authorDirectory = favorite.author.slug;
             const firstLetter = authorDirectory.slice(0, 1);
             const pages = favorite.pages?.split(", ");
+            pages?.sort();
 
             return (
               <div style={{ textAlign: "center" }} key={favorite.id}>

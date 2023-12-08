@@ -20,6 +20,7 @@ export default async function Book({ params }: { params: { slug: string } }) {
   const tags = book.tag;
   const authorDirectory = book.author.slug;
   const firstLetter = authorDirectory.slice(0, 1);
+  pages?.sort();
 
   return (
     <>
